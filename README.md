@@ -37,4 +37,4 @@ Primero selecciona la carpeta en la que desees tener el proyecto y abre un cmd s
     ```bash
     docker-compose up --build
     ```
-3.- Y con el proceso activo vista la pagina http://localhost:3005
+3.- Y con el proceso activo visita la pagina http://localhost:3005
