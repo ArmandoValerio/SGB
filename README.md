@@ -9,6 +9,14 @@ principalmente esta pensado para ser implementado en la biblioteca de la UT de T
 - **Escaneo inteligente**: ISBN → Google Books API | Sin ISBN → Manual
 - **Dashboard** con filtros (categoría, carrera, stock bajo)
 - **CRUD completo**
+## Roles
+| Nombre              | Rol              |
+|---------------------|------------------|
+| Rita Gonzales       | Frontend         |
+| Martin Moreno       | QA               |
+| Irvin Isael         | Backend          |
+| Armando Valerio     | DevOps / CI/CD   |
+| Fernando Spencer   | Tech Lead        |
 ## Instalación
 Primero selecciona la carpeta en la que desees tener el proyecto y abre un cmd sobre esa carpeta.
 ### Pasos de Instalación
