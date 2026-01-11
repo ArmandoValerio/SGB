@@ -28,3 +28,13 @@ Primero selecciona la carpeta en la que desees tener el proyecto y abre un cmd s
     ```bash
     cd SGB
     ```
+## Dockerizacion 
+1.  Ejecuta el siguiente comando en la terminal del proyecto:
+    ```bash
+    docker build -t "sgb" .
+    ```
+2.  Ya con el proceso finalizado, ejecuta el siguiente comando:
+    ```bash
+    docker-compose up --build
+    ```
+3.- Y con el proceso activo vista la pagina http://localhost:3005
