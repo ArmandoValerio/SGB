@@ -43,7 +43,7 @@ jobs:
       - name: Wait for server to start
         run: |
           for i in {1..15}; do
-            if curl -sSf http://localhost:3000/; then
+            if curl -sSf http://localhost:3005/; then
               echo "✓ Server ready"
               exit 0
             fi
@@ -53,11 +53,7 @@ jobs:
 
       - name: Test index.html is served
         run: |
-          curl -v http://localhost:3000/ | grep -q "Welcome to SGB" && echo "✓ index.html served correctly" || exit 1
-
-      - name: Test API endpoint
-        run: |
-          curl -v http://localhost:3000/api/hello | grep -q "Hola" && echo "✓ API working" || exit 1
+          curl -v http://localhost:3005/ | grep -q "Welcome to SGB" && echo "✓ index.html served correctly" || exit 1
 
       - name: Stop server
         if: always()

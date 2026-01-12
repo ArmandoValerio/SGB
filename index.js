@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3005;
 
 // Registro simple de todas las solicitudes (ayuda a depurar)
 app.use((req, res, next) => {
