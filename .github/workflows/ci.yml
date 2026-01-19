@@ -18,8 +18,8 @@ jobs:
       - name: Check approvals from specific reviewers
         uses: actions/github-script@v6
         env:
-          QA_REVIEWER: 'ArmandoValerio'   # <- reemplaza con el usuario GitHub del revisor QA
-          TL_REVIEWER: 'ArmandoValerio'   # <- reemplaza con el usuario GitHub del TL
+          QA_REVIEWER: 'HilayGM'   # <- reemplaza con el usuario GitHub del revisor QA
+          TL_REVIEWER: 'Fernet7'   # <- reemplaza con el usuario GitHub del TL
         with:
           script: |
             const pr = context.payload.pull_request;
