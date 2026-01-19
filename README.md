@@ -17,6 +17,15 @@ principalmente esta pensado para ser implementado en la biblioteca de la UT de T
 | Irvin Isael         | Backend          |
 | Armando Valerio     | DevOps / CI/CD   |
 | Fernando Spencer   | Tech Lead        |
+## Arquitectura del proyecto
+Por el momento, el proyecto se está manejando de forma **desacoplada**, separando el frontend y el backend en repositorios independientes para facilitar el desarrollo y mantenimiento.
+
+- **Frontend:** https://github.com/Rita026/Frontend-biblioteca
+- **Backend:** https://github.com/IRVINISAEL/backend-biblioteca
+
+A futuro, se contempla la posibilidad de utilizar este repositorio principal como un **monorepo**, donde se integren tanto el frontend como el backend, con el objetivo de simplificar la gestión y el despliegue del proyecto.
+## Documentación
+Toda la documentación requerida (y la que se irá solicitando a lo largo del proyecto) se encuentra centralizada en la carpeta [`docs`](./docs).
 ## Instalación
 Primero selecciona la carpeta en la que desees tener el proyecto y abre un cmd sobre esa carpeta.
 ### Pasos de Instalación
