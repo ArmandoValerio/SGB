@@ -7,7 +7,45 @@ on:
     branches: [ main ]
 
 jobs:
+  approval:
+    name: Require specific reviewer approvals
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout (for github-script auth)
+        uses: actions/checkout@v4
+
+      - name: Check approvals from specific reviewers
+        uses: actions/github-script@v6
+        env:
+          QA_REVIEWER: 'ArmandoValerio'   # <- reemplaza con el usuario GitHub del revisor QA
+          TL_REVIEWER: 'ArmandoValerio'   # <- reemplaza con el usuario GitHub del TL
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            if (!pr) core.setFailed('This workflow must be run from a pull_request event.');
+            const prNumber = pr.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const qa = process.env.QA_REVIEWER;
+            const tl = process.env.TL_REVIEWER;
+            if (!qa || !tl) core.setFailed('QA_REVIEWER and TL_REVIEWER must be set in the workflow.');
+
+            const reviews = await github.rest.pulls.listReviews({ owner, repo, pull_number: prNumber });
+            const approvers = new Set();
+            for (const r of reviews.data) {
+              if (r.state === 'APPROVED' && r.user && r.user.login) approvers.add(r.user.login.toLowerCase());
+            }
+
+            const hasQa = approvers.has(qa.toLowerCase());
+            const hasTl = approvers.has(tl.toLowerCase());
+
+            if (!hasQa) core.setFailed(`PR must be approved by the QA reviewer: ${qa}`);
+            if (!hasTl) core.setFailed(`PR must be approved by the TL reviewer: ${tl}`);
+            core.info(`Approvals found from required reviewers: ${qa}, ${tl}`);
   test:
+    needs: approval
     name: Install & Test
     runs-on: ubuntu-latest
     steps:
